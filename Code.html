@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Charity Donation Tracker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            text-align:center;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"],
+        input[type="number"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            border-radius: 5px;
+            border: none;
+            box-shadow: inset 0 1px 3px rgba(0,0,0,.2);
+        }
+        input[type="submit"] {
+            background-color: green;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 20px;
+        }
+        th,
+        td {
+            text-align: left;
+            padding: 8px;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2
+        }
+
+        /* Add styles for top navigation bar */
+        .topnav {
+          overflow:hidden; 
+          background-color:#333; 
+          display:flex; 
+          justify-content:space-between; 
+          align-items:center; 
+          padding-right:10px; 
+          padding-left:10px; 
+        }
+
+        .topnav a{
+          float:left; 
+          display:block; 
+          color:#f2f2f2; 
+          text-align:center; 
+          padding:14px 16px; 
+          text-decoration:none; 
+          font-size:17px; 
+          transition-duration:.3s; 
+        }
+
+        .topnav a:hover{
+          background-color:#111; 
+          color:white; 
+          transform-origin:center center; 
+          transform:scale(1.1); 
+        }
+       * {box-sizing: border-box;}
+body {font-family: Verdana, sans-serif;}
+.mySlides {display: none;}
+img {vertical-align: middle;}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .text {font-size: 11px}
+
+    /* Add styles for footer */
+   
+   .footer
+         {
+            position: absoulute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background-color: #333;
+            color: white;
+            text-align: center;
+        }
+    .footer a{
+      color:white;/*white*/
+      text-decoration:none;/*none*/
+    }
+
+    /* Add styles for modal */
+    .modal {
+      display:none;/* Hidden by default */
+      position:absolute;/* Stay in place */
+      z-index:auto;/*1 Sit on top */
+      left:auto;/*0*/
+      top:auto;/*0*/
+      width:auto;/* Full width */
+      height:auto;/* Full height */
+      overflow:auto;/* Enable scroll if needed */
+      background-color:#33333380;/* Fallback color */
+    }
+
+    /* Modal Content/Box */
+    .modal-content {
+      background-color:#fefefe;
+      margin:auto auto auto auto;/*15% from the top and centered*/
+      padding:auto auto auto auto;/*20px*/give
+      border:none;/*1px solid #888*/
+      width:auto;/*80%*/
+    }
+
+    /* Add styles for close button */
+    .close{
+       color:#aaaaaa80;/*#aaa*/
+       float:right;/*right*/
+       font-size:auto;/*28px*/
+       font-weight:bold;/*bold*/
+     }
+
+     /* Add styles for close button hover/focus */
+     .close:hover,
+     .close:focus{
+       color:black;/*black*/
+       text-decoration:none;/*none*/
+       cursor:pointer;/*pointer*/
+     }
+
+     /* Add styles for checkbox */
+     .form-group input[type="checkbox"]{
+       margin-right:auto;/*10px*/
+       vertical-align:text-bottom;/*middle*/
+       position:relative;/*relative*/
+       bottom:-1px;/*-1px*/
+       cursor:pointer;/*pointer*/
+     }
+
+     /* Add styles for forget password link */
+     .form-group a{
+       color:#33333380;/*#333*/
+       text-decoration:none;/*none*/
+     }
+
+     /* Add styles for forget password link hover */
+     .form-group a:hover{
+       color:#11111180;/*#111*/
+     }
+
+     /* Add styles for social media icons */
+     .social-icons img{
+       width:auto/*32px*/;
+       height:auto/*32px*/;
+       margin-right:auto/*10px*/;
+     }
+
+    </style>
+</head>
+<body>
+    <!-- Add top navigation bar -->
+    <div class="topnav">
+      <div>
+         <a href="#home">Home</a>
+         <a href="#about">About</a>
+         <a href="#contact">Contact</a>
+      </div>
+      <div>
+         <a href="#signup" id="signupBtn">Sign Up</a>
+         <a href="#login" id="loginBtn">Login</a>
+      </div>
+    </div>
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+       <!-- Modal content -->
+       <div class="modal-content">
+         <span class="close">×</span>
+         <form id="user-form">
+           <div class="form-group">
+             <label for="username">Username:</label>
+             <input type="text" id="username" name="username" required>
+           </div>
+           <div class="form-group">
+             <label for="password">Password:</label>
+             <input type="password" id="password" name="password" required>
+           </div>
+           <div class="form-group">
+             <input type="checkbox" id="rememberMe" name="rememberMe">
+             <label for="rememberMe">Remember Me</label>
+           </div>
+           <div class="form-group">
+             <a href="#forgetPassword">Forget Password?</a>
+           </div>
+           <input type="submit" value="Submit">
+         </form>
+       </div>
+     </div>
+ <section>
+  <img class="mySlides" src="https://3.bp.blogspot.com/-h9NO6JDbPuA/Uusuxlcr1YI/AAAAAAAAFFA/rVvQie-3fGI/s1600/Donation-to-+children-charity-in-India.jpg"
+  style="width:100%">
+  <img class="mySlides" src="https://th.bing.com/th/id/R.0fb6d9fb421211e81afa378fa9a1108d?rik=QOSN5HovRXpwFA&riu=http%3a%2f%2fwww.pondicherryarchdiocese.org%2fwebresources%2fimages%2fdonate_childrenSlate.jpg&ehk=C6SeKZ7YJMZ7p2OjVPChw%2b%2f24hr72JwzOP9FzDgcPrs%3d&risl=&pid=ImgRaw&r=0"
+  style="width:100%">
+  <img class="mySlides" src="https://th.bing.com/th/id/OIP.tzRg8CcL7T4GbqmQmcucsAHaFj?pid=ImgDet&rs=1"
+  style="width:100%">
+  </section>
+  <div style="text-align:center">
+  <span class="dot"></span> 
+  <span class="dot"></span> 
+  <span class="dot"></span> 
+</div>
+  <script>
+let slideIndex = 0;
+showSlides();
+
+function showSlides() {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  let dots = document.getElementsByClassName("dot");
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";  
+  }
+  slideIndex++;
+  if (slideIndex > slides.length) {slideIndex = 1}    
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";  
+  dots[slideIndex-1].className += " active";
+  setTimeout(showSlides, 2000); // Change image every 2 seconds
+}
+</script>
+    <div class="container">
+        <h1>Charity Donation Tracker</h1>
+        <form id="donation-form">
+            <div class="form-group">
+                <label for="organization">Organization:</label>
+                <input type="text" id="organization" name="organization" required>
+            </div>
+            <div class="form-group">
+                <label for="amount">Amount:</label>
+                <input type="number" id="amount" name="amount" required>
+            </div>
+            <input type="submit" value="Pay">
+        </form>
+        <table id="donations-table">
+            <tr>
+                <th>Organization</th>
+                <th>Amount</th>
+                <th>Date</th>
+                <th>Credit Points</th>
+            </tr>
+        </table>
+    </div>
+
+    <!-- Add footer -->
+    <div class="footer">
+        <p>Follow us on social media:</p>
+        <a href="https://www.facebook.com/charitydonationtracker">Facebook</a> |
+        <a href="https://www.twitter.com/charitydonationtracker">Twitter</a> |
+        <a href="https://www.instagram.com/charitydonationtracker">Instagram</a>
+    </div>
+
+    <!-- Add script to handle modal -->
+    <script>
+      // Get the modal
+      var modal = document.getElementById("myModal");
+
+      // Get the button that opens the modal
+      var signupBtn = document.getElementById("signupBtn");
+      var loginBtn = document.getElementById("loginBtn");
+
+      // Get the close button
+      var closeBtn = document.getElementsByClassName("close")[0];
+
+      // When the user clicks on the button, open the modal
+      signupBtn.onclick = function() {
+        modal.style.display = "block";
+      }
+      loginBtn.onclick = function() {
+        modal.style.display = "block";
+      }
+
+      // When the user clicks on the close button, close the modal
+      closeBtn.onclick = function() {
+        modal.style.display = "none";
+      }
+
+      // When the user clicks anywhere outside of the modal, close it
+      window.onclick = function(event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      }
+
+      document.getElementById("donation-form").addEventListener("submit", function(event) {
+          event.preventDefault();
+          var organization = document.getElementById("organization").value;
+          var amount = document.getElementById("amount").value;
+           var creditPoints = Math.floor(amount / 50);
+
+          // Payment gateway logic here
+          // ...
+
+          // Add donation to table
+          var table = document.getElementById("donations-table");
+          var row = table.insertRow(-1);
+          var cell1 = row.insertCell(0);
+          var cell2 = row.insertCell(1);
+          var cell3 = row.insertCell(2);
+          var cell4 = row.insertCell(3);
+          cell1.innerHTML = organization;
+          cell2.innerHTML = amount;
+
+          var today = new Date();
+          var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+          cell3.innerHTML = date;
+          cell4.innerHTML = creditPoints;
+          // Reset form
+          document.getElementById("donation-form").reset();
+      });
+    </script>
+
+</body>
+
+</html>
